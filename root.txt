@@ -1,0 +1,37 @@
+#generator
+
+import nbformat as nbf
+import os
+
+def modify_and_write_notebook(file_path, seed, output_folder, output_file_name):
+    # Ensure the output folder exists
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Read the content of the file
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    # Replace the seed in the env.reset() line
+    modified_content = content.replace("env.reset(seed = 28)", f"env.reset(seed = {seed})")
+
+    # Create a new notebook
+    nb = nbf.v4.new_notebook()
+    code_cell = nbf.v4.new_code_cell(modified_content)
+    nb.cells.append(code_cell)
+
+    # Full path for the output file
+    full_output_path = os.path.join(output_folder, output_file_name)
+
+    # Write the modified content to a new notebook file in the specified folder
+    with open(full_output_path, 'w') as new_file:
+        nbf.write(nb, new_file)
+
+# File path of the original PickGNP.txt
+file_path = 'PickGNP.txt'
+output_folder = 'Generated_Notebooks2'  # Folder where the notebooks will be saved
+
+# Create notebooks with different seeds in the new folder
+for i in range(40,60):
+    output_file_name = f'PickGNP_seed_{i}.ipynb'
+    modify_and_write_notebook(file_path, i, output_folder, output_file_name)
