@@ -124,7 +124,7 @@ def initial_enviroment():
     total = 0
     current = "J01"
 
-    while total < 30:
+    while total < 60:
         if PickUped == True:
             break
         current_function = functionsLibrary1[current]
@@ -332,7 +332,7 @@ def go_thru(graph_array):
     index = 0
     step = 1
 
-    while step <= 20:
+    while step <= 60:
 
         node_id = graph_array[index]
 
