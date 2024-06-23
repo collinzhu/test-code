@@ -18,4 +18,6 @@ After step 3, it will write an output file: `Drop_outputs*1-*20`, which contains
 
 ---
 
-You can copy and paste the above text for your README file.
+Original file: PickGNP.txt DropGNP.txt
+We could modify the rate for crossover and mutation
+
